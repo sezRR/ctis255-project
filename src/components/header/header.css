@@ -1,6 +1,8 @@
 .header-container {
     display: flex;
     justify-content: space-between;
+    height: 2.25rem;
+    align-items: center;
 }
 
 .header-content-container {
@@ -12,9 +14,4 @@
 .header-title {
     font-size: 1.5rem;
     font-weight: bold;
-}
-
-.user-container {
-    display: flex;
-    gap: 1.5rem;
 }

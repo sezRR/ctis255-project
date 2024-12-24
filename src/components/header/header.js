@@ -1,8 +1,14 @@
 import { injectCSS } from "../../utils/injectCSS.js";
 import TemplateCache from "../../utils/templateCache.js";
-import ButtonComponent from "../button/button.js";
+import UserProfileComponent from "./user-profile/user-profile.js";
 
+/**
+ * @author Sezer Tetik
+ */
 const HeaderComponent = (function () {
+    const cssPath = 'src/components/header/header.css';
+    const htmlPath = 'src/components/header/header.html';
+
     /**
      * Renders a Header component
      * @param {string} containerSelector - The selector of the container that the header will be appended to.
@@ -10,26 +16,15 @@ const HeaderComponent = (function () {
      * @param {string} description - The description that will be displayed on the header.
      */
     function render(containerSelector, title, description) {
-        injectCSS('src/components/header/header.css');
+        injectCSS(cssPath);
 
-        TemplateCache.getTemplate('src/components/header/header.html', function (template) {
+        TemplateCache.getTemplate(htmlPath, function (template) {
             const html = template
                 .replace('{{title}}', title)
                 .replace("{{description}}", description);
             $(containerSelector).append(html);
 
-            ButtonComponent.render({
-                containerSelector: '#user-container',
-                icon: "fa-user",
-                text: "Gül", // TODO: Get the user name from the local storage
-                type: "secondary",
-            });
-
-            ButtonComponent.render({
-                containerSelector: '#user-container',
-                icon: 'fa-door-open',
-                text: 'Logout',
-            });
+            UserProfileComponent.render("#user-profile-container");
         });
     }
 
