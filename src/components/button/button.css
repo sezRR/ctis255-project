@@ -5,11 +5,15 @@
     align-items: center;
     gap: 0.5rem;
     cursor: pointer;
+    border-radius: 0.25rem;
 }
 
 .btn-primary {
     border: 1px solid #dddddd;
-    border-radius: 0.25rem;
+}
+
+.btn-primary:hover {
+    background-color: #eaeaea;
 }
 
 .btn-secondary {

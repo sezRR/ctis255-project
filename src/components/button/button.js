@@ -12,6 +12,7 @@ const ButtonComponent = (function () {
      * @param {iconGroup} iconGroup - The icon group that the icon belongs to. Default is "fa-solid".
      * @param {string} text - The text that will be displayed on the button.
      * @param {string} type - The type of the button. Default is "primary". Other options are "secondary".
+     * @param {function} onClick - The function that will be called when the button is clicked
      */
     function render({
         containerSelector,
@@ -19,16 +20,20 @@ const ButtonComponent = (function () {
         iconGroup = 'fa-solid',
         text,
         type = 'primary',
+        onClick,
     }) {
         injectCSS('src/components/button/button.css');
 
         TemplateCache.getTemplate('src/components/button/button.html', function (template) {
-            const html = template
+            const buttonHtml = template
                 .replace('{{iconGroup}}', iconGroup)
                 .replace('{{iconName}}', icon)
                 .replace('{{text}}', text)
                 .replace('{{type}}', type);
-            $(containerSelector).append(html);
+            const $button = $(buttonHtml);
+            $(containerSelector).append($button);
+
+            onClick && $button.on('click', onClick);
         });
     }
 
