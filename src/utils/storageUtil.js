@@ -9,3 +9,4 @@ function addItemToLocalStorage(key, value) {
     localStorage.setItem(key, JSON.stringify(items));
 }
 
+export { addItemToLocalStorage };
