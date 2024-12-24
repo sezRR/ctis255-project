@@ -11,8 +11,6 @@ const TemplateCache = (function () {
             callback(cache[path]);
         } else {
             $.get(path, function (data) {
-                console.log(data);
-
                 cache[path] = data;
                 callback(data);
             });
