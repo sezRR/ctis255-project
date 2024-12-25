@@ -3,7 +3,7 @@ import TemplateCache from '../../utils/templateCache.js';
 const SamplePage = (function () {
     function render() {
         TemplateCache.getTemplate('src/pages/sample_page/sample_page.html', function (template) {
-            $('#app').html(template);
+            $('#content').html(template);
             // initializeComponents();
         });
     }
@@ -14,7 +14,7 @@ const SamplePage = (function () {
 const SamplePage2 = (function () {
     function render() {
         TemplateCache.getTemplate('src/pages/sample_page/sample_page.html', function (template) {
-            $('#app').html(template);
+            $('#content').html(template);
             // initializeComponents();
         });
     }

@@ -8,7 +8,7 @@ const CardComponent = (function () {
         TemplateCache.getTemplate('components/sample_component/sample_component.html', function (template) {
             const html = template
                 .replace('{imageUrl}', data.imageUrl)
-                .replace('{title}', data.title)
+                .replace('{name}', data.title)
                 .replace('{description}', data.description);
             $(containerSelector).append(html);
         });
