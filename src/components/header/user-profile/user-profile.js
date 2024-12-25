@@ -1,7 +1,8 @@
-import { injectCSS } from "../../../utils/injectCSS.js";
+import { injectCSS, removeInjectedCSS } from "../../../utils/injectCSS.js";
 import TemplateCache from "../../../utils/templateCache.js";
 import ButtonComponent from "../../button/button.js";
-import SamplePage from "../../../pages/sample_page/sample_page.js";
+import ProfilesPage from "../../../pages/profiles-page/profiles-page.js";
+import globalState from "../../../stores/globalState.js";
 
 /**
  * @author Sezer Tetik
@@ -18,7 +19,7 @@ const UserProfileComponent = (function () {
         injectCSS(cssPath);
 
         TemplateCache.getTemplate(htmlPath, function (template) {
-            const user = { name: "John Doe" }; // TODO: Get the user name from the local storage
+            const user = { name: globalState.currentUser.name };
             if (user === undefined)
                 throw new Error("User is required to render the User Profile component");
 
@@ -36,7 +37,7 @@ const UserProfileComponent = (function () {
                 icon: 'fa-door-open',
                 text: 'Logout',
                 onClick: function () {
-                    SamplePage.render()
+                    ProfilesPage.render()
 
                     // Destroy the User Profile component
                     destroy(containerSelector);
@@ -47,7 +48,7 @@ const UserProfileComponent = (function () {
 
     function destroy(containerSelector) {
         $(containerSelector).empty(); // Remove component from DOM
-        removeCSS(cssPath); // Remove the injected CSS
+        removeInjectedCSS() // Remove the injected CSS files
     }
 
     return { render };
