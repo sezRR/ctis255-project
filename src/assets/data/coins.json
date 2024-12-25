@@ -3,54 +3,54 @@
         "id": "ada",
         "name": "Cardano",
         "symbol": "ADA",
-        "img": "src/assets/images/ada.png"
+        "img": "src/assets/images/crypto_currencies/ada.png"
     },
     {
         "id": "avax",
         "name": "Avalanche",
         "symbol": "AVAX",
-        "img": "src/assets/images/avax.png"
+        "img": "src/assets/images/crypto_currencies/avax.png"
     },
     {
         "id": "btc",
         "name": "Bitcoin",
         "symbol": "BTC",
-        "img": "src/assets/images/btc.png"
+        "img": "src/assets/images/crypto_currencies/btc.png"
     },
     {
         "id": "doge",
         "name": "Dogecoin",
         "symbol": "DOGE",
-        "img": "src/assets/images/doge.png"
+        "img": "src/assets/images/crypto_currencies/doge.png"
     },
     {
         "id": "eth",
         "name": "Ethereum",
         "symbol": "ETH",
-        "img": "src/assets/images/eth.png"
+        "img": "src/assets/images/crypto_currencies/eth.png"
     },
     {
         "id": "pol",
         "name": "Polkadot",
         "symbol": "POL",
-        "img": "src/assets/images/pol.png"
+        "img": "src/assets/images/crypto_currencies/pol.png"
     },
     {
         "id": "snx",
         "name": "Synthetix",
         "symbol": "SNX",
-        "img": "src/assets/images/snx.png"
+        "img": "src/assets/images/crypto_currencies/snx.png"
     },
     {
         "id": "trx",
         "name": "Tron",
         "symbol": "TRX",
-        "img": "src/assets/images/trx.png"
+        "img": "src/assets/images/crypto_currencies/trx.png"
     },
     {
         "id": "xrp",
         "name": "Ripple",
         "symbol": "XRP",
-        "img": "src/assets/images/xrp.png"
+        "img": "src/assets/images/crypto_currencies/xrp.png"
     }
 ]
