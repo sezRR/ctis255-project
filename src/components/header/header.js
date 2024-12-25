@@ -1,6 +1,7 @@
 import { injectCSS } from "../../utils/injectCSS.js";
 import TemplateCache from "../../utils/templateCache.js";
 import UserProfileComponent from "./user-profile/user-profile.js";
+import globalState from "../../stores/globalState.js";
 
 /**
  * @author Sezer Tetik
@@ -16,15 +17,16 @@ const HeaderComponent = (function () {
      * @param {string} description - The description that will be displayed on the header.
      */
     function render(containerSelector, title, description) {
-        injectCSS(cssPath);
+        injectCSS(cssPath, true);
 
         TemplateCache.getTemplate(htmlPath, function (template) {
             const html = template
                 .replace('{{title}}', title)
                 .replace("{{description}}", description);
-            $(containerSelector).append(html);
+            $(containerSelector).html(html);
 
-            UserProfileComponent.render("#user-profile-container");
+            if (globalState.currentUser)
+                UserProfileComponent.render("#user-profile-container");
         });
     }
 
