@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crypto Trading Information System</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        margin: 20px;
+      }
+      .trading-section,
+      .wallet-section {
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+      }
+      .trading-section {
+        float: left;
+        width: 48%;
+        margin-right: 4%;
+        background-color: #f9f9f9;
+      }
+      .wallet-section {
+        float: right;
+        width: 48%;
+        background-color: #f9f9f9;
+      }
+      .clear {
+        clear: both;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        text-align: left;
+        padding: 8px;
+        border: 1px solid #ddd;
+      }
+      th {
+        background-color: #d5d5ff;
+        color: black;
+      }
+      td:nth-child(2),
+      td:nth-child(3),
+      td:nth-child(4) {
+        background-color: #e8f9e8;
+      }
+      td {
+        font-size: 1rem;
+      }
+      .button {
+        display: inline-block;
+        padding: 10px 15px;
+        margin: 5px;
+        cursor: pointer;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        width: 100%;
+        text-align: center;
+      }
+      .buy-button {
+        background-color: #4caf50;
+      }
+      .sell-button {
+        background-color: #f44336;
+      }
+      .toggle-group {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
+      .active {
+        opacity: 1;
+      }
+      .inactive {
+        opacity: 0.6;
+      }
+      #total-money {
+        text-align: left;
+        font-size: 2.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Crypto Trading Information System</h1>
+
+      <button id="next-day-btn">Next Day</button>
+      <div id="current-day">Day: 1</div>
+
+      <div class="trading-section">
+        <h2>Trading</h2>
+        <label for="coin-select">Select Coin:</label>
+        <select id="coin-select">
+          <option value="btc">Bitcoin</option>
+          <option value="eth">Ethereum</option>
+          <option value="ada">Cardano</option>
+          <option value="trx">Tron</option>
+          <option value="avax">Avalanche</option>
+        </select>
+        <div class="toggle-group">
+          <button class="button buy-button active" id="buy-toggle">Buy</button>
+          <button class="button sell-button inactive" id="sell-toggle">
+            Sell
+          </button>
+        </div>
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" min="0" placeholder="Enter amount" />
+        <button class="button buy-button" id="action-btn">Buy Bitcoin</button>
+      </div>
+
+      <div class="wallet-section">
+        <h2>Wallet</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Coin</th>
+              <th>Amount</th>
+              <th>Subtotal</th>
+              <th>Last Close</th>
+            </tr>
+          </thead>
+          <tbody id="wallet-table">
+            <tr>
+              <td>Dolar</td>
+              <td id="cash-balance">$1000.00</td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="clear"></div>
+    </div>
+
+    <script src="db.js"></script>
+    <script>
+      $(document).ready(function () {
+        let balance = 1000.0;
+        let wallet = {};
+        let currentDay = 1;
+        let isBuying = true;
+
+        const coinPhotos = {
+          btc: "images/btc.png",
+          eth: "images/eth.png",
+          ada: "images/ada.png",
+          trx: "images/trx.png",
+          avax: "images/avax.png",
+        };
+
+        function updateWalletTable() {
+          let walletTable =
+            "<tr><td>Dolar</td><td id='cash-balance'>$" +
+            balance.toFixed(2) +
+            "</td><td></td><td></td></tr>";
+          for (let coin in wallet) {
+            const subtotal = (
+              wallet[coin].amount * wallet[coin].lastClose
+            ).toFixed(2);
+            walletTable += `
+                        <tr>
+                            <td>
+                                <img src="${
+                                  coinPhotos[coin]
+                                }" alt="${coin.toUpperCase()}" width="25" height="25">
+                                ${coin.toUpperCase()}
+                            </td>
+                            <td>${wallet[coin].amount.toFixed(6)}</td>
+                            <td>$${subtotal}</td>
+                            <td>$${wallet[coin].lastClose}</td>
+                        </tr>
+                    `;
+          }
+          $("#wallet-table").html(walletTable);
+        }
+
+        function updateBalanceDisplay() {
+          $("#cash-balance").text(`$${balance.toFixed(2)}`);
+        }
+
+        function updateTotalValue() {
+          let total = balance;
+          for (let coin in wallet) {
+            total += wallet[coin].amount * wallet[coin].lastClose;
+          }
+          $("#total-money").text(`$${total.toFixed(2)}`);
+        }
+
+        function toggleAction(isBuy) {
+          isBuying = isBuy;
+          $("#buy-toggle").toggleClass("active inactive", !isBuying);
+          $("#sell-toggle").toggleClass("active inactive", isBuying);
+          const actionText = isBuying ? "Buy" : "Sell";
+          const selectedCoin = $("#coin-select").val();
+          $("#action-btn").text(`${actionText} ${selectedCoin.toUpperCase()}`);
+          $("#action-btn")
+            .removeClass("buy-button sell-button")
+            .addClass(isBuying ? "buy-button" : "sell-button");
+        }
+
+        function updateActionButton() {
+          const selectedCoin = $("#coin-select").val();
+          const actionText = isBuying ? "Buy" : "Sell";
+          $("#action-btn").text(`${actionText} ${selectedCoin.toUpperCase()}`);
+        }
+
+        function updateCoinPrices() {
+          const marketDay = market[currentDay - 1];
+          marketDay.coins.forEach((coin) => {
+            if (wallet[coin.code]) {
+              wallet[coin.code].lastClose = coin.close; // Update the lastClose price for owned coins
+            }
+          });
+          updateWalletTable();
+        }
+
+        $("#next-day-btn").click(function () {
+          currentDay += 1;
+          $("#current-day").text(`Day: ${currentDay}`);
+          updateCoinPrices();
+        });
+
+        $("#coin-select").change(updateActionButton);
+
+        $("#buy-toggle").click(() => toggleAction(true));
+        $("#sell-toggle").click(() => toggleAction(false));
+
+        $("#action-btn").click(function () {
+          const amount = parseFloat($("#amount").val());
+          if (isNaN(amount) || amount <= 0) {
+            alert("Please enter a valid amount.");
+            return;
+          }
+
+          const selectedCoin = $("#coin-select").val();
+          const marketDay = market[currentDay - 1];
+          const coinData = marketDay.coins.find(
+            (coin) => coin.code === selectedCoin
+          );
+
+          if (isBuying) {
+            const cost = amount * coinData.close;
+            if (balance < cost) {
+              alert("Insufficient balance.");
+              return;
+            }
+            balance -= cost;
+            if (!wallet[selectedCoin]) {
+              wallet[selectedCoin] = { amount: 0, lastClose: coinData.close };
+            }
+            wallet[selectedCoin].amount += amount;
+            wallet[selectedCoin].lastClose = coinData.close;
+            alert(`Bought ${amount} ${selectedCoin.toUpperCase()}`);
+          } else {
+            if (!wallet[selectedCoin] || wallet[selectedCoin].amount < amount) {
+              alert("Insufficient coins to sell.");
+              return;
+            }
+            const revenue = amount * coinData.close;
+            balance += revenue;
+            wallet[selectedCoin].amount -= amount;
+            if (wallet[selectedCoin].amount === 0) {
+              delete wallet[selectedCoin];
+            }
+            alert(`Sold ${amount} ${selectedCoin.toUpperCase()}`);
+          }
+
+          updateBalanceDisplay();
+          updateWalletTable();
+          updateTotalValue();
+        });
+
+        updateWalletTable();
+        updateBalanceDisplay();
+        updateTotalValue();
+      });
+    </script>
+  </body>
+</html>

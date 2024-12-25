@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crypto Trading Information System</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="bottom.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2 id="total-money">$1000.00</h2>
+
+      <button id="next-day-btn">Next Day</button>
+      <div id="current-day">Day: 1</div>
+
+      <div class="section-container">
+        <div class="trading-section">
+          <h2 style="text-align: center">Trading</h2>
+          <label for="coin-select">Select Coin:</label>
+          <select id="coin-select">
+            <option value="ada">Cardano (ADA)</option>
+            <option value="avax">Avalanche (AVAX)</option>
+            <option value="btc">Bitcoin (BTC)</option>
+            <option value="doge">Dogecoin (DOGE)</option>
+            <option value="eth">Ethereum (ETH)</option>
+            <option value="pol">Polkadot (POL)</option>
+            <option value="snx">Synthetix (SNX)</option>
+            <option value="trx">Tron (TRX)</option>
+            <option value="xrp">Ripple (XRP)</option>
+          </select>
+          <div class="toggle-group">
+            <button class="button buy-button active" id="buy-toggle">
+              Buy
+            </button>
+            <button class="button sell-button inactive" id="sell-toggle">
+              Sell
+            </button>
+          </div>
+          <label for="amount">Amount:</label>
+          <input type="number" id="amount" min="0" placeholder="Enter amount" />
+          <button class="button buy-button" id="action-btn">Buy ADA</button>
+        </div>
+
+        <div class="wallet-section">
+          <h2 style="text-align: center">Wallet</h2>
+          <table>
+            <tr>
+              <th>Coin</th>
+              <th>Amount</th>
+              <th>Subtotal</th>
+              <th>Last Close</th>
+            </tr>
+            <tbody id="wallet-table">
+              <tr id="cash-balance-row">
+                <td>Dolar</td>
+                <td id="cash-balance">$1000.00</td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script src="db.js"></script>
+    <script src="bottom.js"></script>
+  </body>
+</html>
