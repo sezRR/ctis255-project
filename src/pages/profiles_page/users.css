@@ -84,6 +84,9 @@ body {
     width: 120px;
     cursor: pointer;
 }
+.user-card:hover{
+    background: #999;
+}
 .user-card span {
     background: blue;
     margin-left: 80px;
@@ -93,6 +96,9 @@ body {
     height: 24px;
     text-align: center;
     padding: 3px;
+}
+.user-card span:hover {
+    scale: 1.15;
 }
 .user-card i {
     font-size: 40px;
