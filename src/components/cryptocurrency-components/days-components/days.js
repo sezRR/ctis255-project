@@ -5,7 +5,7 @@ import ButtonComponent from "../../button/button.js";
 import HeadingComponent from "./heading/heading.js";
 import CoinChartComponent from "../chart-components/coin-chart/coin-chart.js";
 import { setNewUsers } from "../../../utils/localStorageUtil.js";
-import TradingComponent from "../../../pages/cryptocurrency-page/arda-port/arda-port.js";
+import TradingComponent from "../trading-components/trading-component.js";
 import CoinFilterComponent from "../chart-components/coin-filter/coin-filter.js";
 
 const DaysComponent = (function () {

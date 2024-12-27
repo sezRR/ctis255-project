@@ -1,7 +1,7 @@
 import TemplateCache from "../../utils/templateCache.js"
 import ChartComposition from "../../components/cryptocurrency-components/chart-components/chart-composition.js"
 import HeaderComponent from "../../components/header/header.js";
-import TradingComponent from "../../pages/cryptocurrency-page/arda-port/arda-port.js";
+import TradingComponent from "../../components/cryptocurrency-components/trading-components/trading-component.js";
 import DaysComponent from "../../components/cryptocurrency-components/days-components/days.js";
 
 const CryptocurrencyPage = (function () {

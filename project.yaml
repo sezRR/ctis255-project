@@ -3,12 +3,8 @@ project:
     description: Crypto Trading Information System
     version: 1.0.0
     authors:
-        - name: John Doe
-          email:
-        - name: Jane Doe
-          email:
-        - name: John Smith
-          email:
-        - name: Jane Smith
-          email:
+        - name: Arda Becanım
+        - name: Kerem Coşkun
+        - name: Oktay Giniş
+        - name: Sezer Tetik
     license: MIT

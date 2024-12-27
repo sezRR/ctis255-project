@@ -6,8 +6,8 @@ import Asset from "../../../models/asset.js";
 import { setNewUsers } from "../../../utils/localStorageUtil.js";
 
 const TradingComponent = (function () {
-    const htmlPath = "src/pages/cryptocurrency-page/arda-port/arda-port.html";
-    const cssPath = "src/pages/cryptocurrency-page/arda-port/arda-port.css";
+    const htmlPath = "src/components/cryptocurrency-components/trading-components/trading-component.html";
+    const cssPath = "src/components/cryptocurrency-components/trading-components/trading-component.css";
 
     /**
      * Initializes and renders the Trading component.

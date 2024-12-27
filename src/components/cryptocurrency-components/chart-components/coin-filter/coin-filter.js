@@ -7,7 +7,7 @@ import CoinDetails from "../../../../models/coins/coinDetails.js";
 import { market } from "../../../../assets/data/db.js";
 import SummaryRowComponent from "../summary-row/summary-row.js";
 import CoinChartComponent from "../coin-chart/coin-chart.js";
-import TradingComponent from "../../../../pages/cryptocurrency-page/arda-port/arda-port.js";
+import TradingComponent from "../../trading-components/trading-component.js";
 
 const CoinFilterComponent = (function () {
     const cssPath = 'src/components/cryptocurrency-components/chart-components/coin-filter/coin-filter.css';
