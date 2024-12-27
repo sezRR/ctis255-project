@@ -13,6 +13,8 @@ const ButtonComponent = (function () {
      * @param {string} text - The text that will be displayed on the button.
      * @param {string} type - The type of the button. Default is "primary". Other options are "secondary".
      * @param {function} onClick - The function that will be called when the button is clicked
+     * @param {object} customCSS - Custom CSS to be applied to the button
+     * @param {string} id - The id of the button
      */
     function render({
         containerSelector,
@@ -21,6 +23,8 @@ const ButtonComponent = (function () {
         text,
         type = 'primary',
         onClick,
+        customCSS,
+        id
     }) {
         injectCSS('src/components/button/button.css');
 
@@ -32,6 +36,9 @@ const ButtonComponent = (function () {
                 .replace('{{type}}', type);
             const $button = $(buttonHtml);
             $(containerSelector).append($button);
+
+            customCSS && $button.css(customCSS);
+            id && $button.attr('id', id);
 
             onClick && $button.on('click', onClick);
         });
