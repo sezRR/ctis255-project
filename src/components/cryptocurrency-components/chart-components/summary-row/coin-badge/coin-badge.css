@@ -1,0 +1,10 @@
+.coin-badge-content-container {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.coin-badge-coin-name {
+    font-size: 1.15rem;
+    font-weight: 500;
+}

@@ -1,10 +1,15 @@
-.crypto-filter-content-container {
+.coin-filter-content-container {
     display: flex;
     gap: 1rem;
     justify-content: center;
     border: 1px solid #dddddd;
     padding: 1rem;
-    border-radius: 0.5rem;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+}
+
+.coin-filter-content-container img:hover {
+    cursor: pointer;
 }
 
 .selected-coin {

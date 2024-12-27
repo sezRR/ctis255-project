@@ -1,0 +1,13 @@
+.close-price-indicator {
+    border: 1px dashed #cccccc;
+    width: 100%;
+    position: absolute;
+    z-index: 100;
+}
+
+.close-price {
+    color: #cccccc;
+    position: absolute;
+    right: 16px;
+    bottom: 0px;
+}

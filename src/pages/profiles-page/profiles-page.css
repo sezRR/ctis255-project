@@ -60,8 +60,9 @@
 }
 
 .user-card {
-    background: #ccc;
-    padding: 10px 40px;
+    background: #e0e0e0;
+    border: 1px solid #999;
+    padding: 10px 35px;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
@@ -79,12 +80,24 @@
     border-radius: 75%;
     width: 24px;
     height: 24px;
-    text-align: center;
-    padding: 3px;
+    /* text-align: center; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    transition: scale 0.3s;
+}
+
+.delete-btn:hover {
+    scale: 1.2;
 }
 
 .user-card i {
     font-size: 40px;
+}
+
+.user-card:hover {
+    background-color: #ccc;
 }
 
 .form {

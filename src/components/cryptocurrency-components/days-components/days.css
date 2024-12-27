@@ -1,0 +1,12 @@
+.days-content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.forward-buttons-container {
+    display: flex;
+    gap: 2rem;
+}

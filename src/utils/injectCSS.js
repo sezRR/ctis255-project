@@ -23,7 +23,7 @@ function removeCSS(path) {
  * @param {string} exceptAttr - The attribute to exclude from removal
  */
 function removeInjectedCSS(exceptAttr = 'data-layout') {
-    $(`link[data-dynamic="true"]:not([${exceptAttr}])`).remove();
+    $(`link[data-dynamic="true"]:not([${exceptAttr}="true"])`).remove()
 }
 
 export { injectCSS, removeCSS, removeInjectedCSS };

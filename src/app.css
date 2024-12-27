@@ -17,7 +17,7 @@ html {
     border-left: 1px solid #dddddd;
     border-right: 1px solid #dddddd;
     border-bottom: 1px solid #dddddd;
-    height: 100dvh;
+    height: max-content;
     display: flex;
     flex-direction: column;
 }

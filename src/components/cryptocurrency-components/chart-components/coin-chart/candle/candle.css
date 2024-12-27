@@ -1,0 +1,16 @@
+.candle-container {
+    position: absolute;
+    width: 12px;
+    border: 1px solid #000;
+}
+
+.candle-indicator {
+    position: absolute;
+    width: 2px;
+    background-color: #000;
+    z-index: -1000;
+}
+
+.candle-container:hover {
+    cursor: pointer;
+}

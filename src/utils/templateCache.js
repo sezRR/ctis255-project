@@ -17,7 +17,29 @@ const TemplateCache = (function () {
         }
     }
 
-    return { getTemplate };
+    /**
+     * Retrieves a template from the cache or loads it via AJAX.
+     * @param {string} path - Path to the template.
+     * @returns {Promise<string>} A promise that resolves to the loaded template.
+     */
+    function getTemplateAsync(path) {
+        return new Promise((resolve, reject) => {
+            if (cache[path]) {
+                resolve(cache[path]);
+            } else {
+                $.get(path)
+                    .done(function (data) {
+                        cache[path] = data;
+                        resolve(data);
+                    })
+                    .fail(function (jqXHR, textStatus, errorThrown) {
+                        reject(new Error(`Failed to load template: ${textStatus}, ${errorThrown}`));
+                    });
+            }
+        });
+    }
+
+    return { getTemplate, getTemplateAsync };
 })();
 
 export default TemplateCache;

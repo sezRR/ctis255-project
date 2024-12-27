@@ -12,5 +12,5 @@ $(document).ready(function () {
         HeaderComponent.render('#header', 'CTIS', "Crypto Trading Information System"); // TODO: Get the title and description from the config file
 
         ProfilesPage.render()
-    })
+    });
 });

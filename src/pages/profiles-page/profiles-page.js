@@ -4,18 +4,37 @@ import { addItemToLocalStorage } from "../../utils/storageUtil.js";
 import TemplateCache from "../../utils/templateCache.js";
 import globalState from "../../stores/globalState.js";
 import CryptocurrencyPage from "../cryptocurrency-page/cryptocurrency-page.js";
-import HeaderComponent from "../../components/header/header.js";
 
 const ProfilesPage = (function () {
     const cssPath = 'src/pages/profiles-page/profiles-page.css';
     const htmlPath = 'src/pages/profiles-page/profiles-page.html';
 
     function render() {
-        injectCSS(cssPath);
+        injectCSS(cssPath, true);
 
         TemplateCache.getTemplate(htmlPath, function (template) {
+            $("#app").css("height", "100vh");
+
             $(document).ready(function () {
-                const users = JSON.parse(localStorage.getItem("users")) || [];
+                let users = JSON.parse(localStorage.getItem("users")) || [];
+
+                if (users.length === 0) {
+                    const isFirstVisit = localStorage.getItem("firstVisit")
+
+                    if (isFirstVisit === null) {
+                        // Default users
+                        const defaultUsers = [
+                            new User("Arda"),
+                            new User("Kerem"),
+                            new User("Oktay"),
+                            new User("Sezer"),
+                        ];
+                        localStorage.setItem("users", JSON.stringify(defaultUsers));
+                        localStorage.setItem("firstVisit", false);
+                        users = defaultUsers;
+                    }
+                }
+
                 if (users.length)
                     $('.user-part').css("display", "none");
                 for (const user of users) {

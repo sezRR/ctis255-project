@@ -1,0 +1,7 @@
+.boundary {
+    position: absolute;
+    right: 10px;
+    pointer-events: none;
+    background-color: white;
+    padding: 0.25rem;
+}
