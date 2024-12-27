@@ -1,0 +1,23 @@
+.coin-chart-content-container {
+    border-left: 1px solid #e0e0e0;
+    border-right: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+    height: 320px;
+    padding-top: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+    overflow: clip;
+}
+
+.indicators-container {
+    border-top: 1px solid #cccccc;
+    border-right: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+    height: 100%;
+    position: relative;
+}
+
+.candles-container {
+    position: relative;
+    height: 100%;
+}
