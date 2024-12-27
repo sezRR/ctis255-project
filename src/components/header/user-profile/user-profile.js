@@ -47,8 +47,8 @@ const UserProfileComponent = (function () {
     }
 
     function destroy(containerSelector) {
-        $(containerSelector).empty(); // Remove component from DOM
         removeInjectedCSS() // Remove the injected CSS files
+        $(containerSelector).empty(); // Remove component from DOM
     }
 
     return { render };
