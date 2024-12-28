@@ -2,6 +2,9 @@
 
 This is the project repository for the CTIS255 - Frontend Web Technologies course at Bilkent University in Fall 2024-2025.
 
+> [!IMPORTANT] 
+> **Since we used ES Modules, it is not possible to run the project directly on the browser. However, you can run the project on a local server (e.g. Live Server extension in VSCode) or use the online version of the project. The online version of the project is available at the following link: [GitHub Pages](https://sezrr.github.io/ctis255-project/)**
+
 ## Project Structure
 
 In this project, component based development and branching strategy is used. The project is divided into several components, each of which is responsible for a specific part of the project. The project structure is as follows:

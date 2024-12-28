@@ -24,10 +24,10 @@ const ProfilesPage = (function () {
                     if (isFirstVisit === null) {
                         // Default users
                         const defaultUsers = [
-                            new User("Arda"),
-                            new User("Kerem"),
-                            new User("Oktay"),
-                            new User("Sezer"),
+                            new User("Arda Becanım"),
+                            new User("Hüseyin Kerem Coşkun"),
+                            new User("Mustafa Oktay Giniş"),
+                            new User("Sezer Tetik"),
                         ];
                         localStorage.setItem("users", JSON.stringify(defaultUsers));
                         localStorage.setItem("firstVisit", false);

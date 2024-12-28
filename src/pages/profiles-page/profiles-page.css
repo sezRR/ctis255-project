@@ -70,6 +70,7 @@
     gap: 5px;
     position: relative;
     width: 120px;
+    height: fit-content;
     cursor: pointer;
 }
 
@@ -86,6 +87,11 @@
     align-items: center;
     font-size: 14px;
     transition: scale 0.3s;
+}
+
+.user-card div {
+    margin-top: 0.25rem;
+    text-align: center;
 }
 
 .delete-btn:hover {
