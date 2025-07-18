@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> THIS REPOSITORY IS NOT UNDER ACTIVE DEVELOPMENT!
+
 # CTIS255 - Frontend Web Technologies Project
 
 This is the project repository for the CTIS255 - Frontend Web Technologies course at Bilkent University in Fall 2024-2025.
